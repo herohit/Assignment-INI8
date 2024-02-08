@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Delete Confirmation</title>
+</head>
+<style>
+  table {
+    width: 95%;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #dadada;
+  }
+</style>
+
+<body>
+  <div class="p-5  w-5/6 absolute top-10 left-20 h-[50%]">
+    <h1 class="text-5xl mb-5 font-semibold">Confirm Deletion</h1>
+    <p class="text-md mb-4">Are you sure you want to delete record:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Date of Birth</th>
+          <th>Gender</th>
+          <th>Email</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{obj.ID}}</td>
+          <td>{{obj.FirstName}}</td>
+          <td>{{obj.LastName}}</td>
+          <td>{{obj.DateOfBirth}}</td>
+          <td>{{obj.Gender}}</td>
+          <td>{{obj.Email}}</td>
+          <td>{{obj.Address}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <form method="post" class="mt-5 flex gap-4">
+      {% csrf_token %}
+      <button type="submit" class="p-3 bg-red-600 text-white rounded">Confirm Delete</button>
+      <a href="{% url 'read' %}" class="text-white p-3 bg-green-700 rounded">Go Back</a>
+    </form>
+
+  </div>
+</body>
+
+</html>

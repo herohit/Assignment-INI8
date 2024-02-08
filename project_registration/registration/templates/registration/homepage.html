@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+  /* Optional: CSS styling for the table */
+  table {
+    width: 95%;
+    margin: 10px auto;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #dadada;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+</style>
+
+<body>
+  <div class="header bg-slate-300 p-4">
+    <h1 class="text-3xl font-bold underline text-slate-800 text-center ">Registation Data</h1>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Date of Birth</th>
+        <th>Gender</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      {% for data in all_data %}
+      <tr>
+        <td>{{data.ID}}</td>
+        <td>{{data.FirstName}}</td>
+        <td>{{data.LastName}}</td>
+        <td>{{data.DateOfBirth}}</td>
+        <td>{{data.Gender}}</td>
+        <td>{{data.Email}}</td>
+        <td>{{data.Address}}</td>
+        <td class="flex gap-5 justify-center">
+          <a href="{% url 'update' data.ID %}" class="px-5 py-1 bg-green-600 rounded text-white text-center">Edit</a>
+          <a href="{% url 'delete' data.ID %}" class="px-3  py-1 bg-red-600 text-white rounded text-center">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+
+</html>
